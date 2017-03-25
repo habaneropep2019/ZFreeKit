@@ -1,0 +1,7 @@
+A quick note on licensing.
+
+The contents of the ZFreeKit collection are licensed under several licenses.
+
+Because ZFreeKit contains patchsets for the Qt library, those components are licensed under the Q Public License.
+
+Other components are licensed under the GNU GPL.
