@@ -53,8 +53,7 @@ public:
     T pop()
     {
 	T elem( this->last() );
-	if ( !this->isEmpty() )
-	    remove( this->fromLast() );
+	// fail: if ( !this->isEmpty() )   remove( this->fromLast() );
 	return elem;
     }
     T& top() { return this->last(); }

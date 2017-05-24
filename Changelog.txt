@@ -1,0 +1,16 @@
+//  Changelog.txt
+
+bm2017-may-24
+ - added Changelog.txt
+ - modified Configs/Linux-g++-shared
+ - modified qvaluestack.h to allow full compile to proceed
+
+Observations:
+  QValueStack was released with GCC-3.0. It fails with improved compilers.
+  The current goal is with GCC-4.9.2 on Debian 8.x   With the patch to
+  qvaluestack, the QT libraries compile, the tutorials and most of the
+  examples run.  However, the designer does not compile because an XML
+  parsing error.
+
+  The designer uses QStack but the XML parser in qml.h uses QValueStack.
+  So my thinking is to replace QValueStack with QStack.
