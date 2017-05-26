@@ -1,5 +1,9 @@
 //  Changelog.txt
 
+bm2017-may-25
+ - qtextbrowser.h now has a thin wrapper around std::stack
+   Everything compiles but there is still some issue with QString template
+   
 bm2017-may-24
  - added Changelog.txt
  - modified Configs/Linux-g++-shared
