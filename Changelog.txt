@@ -1,0 +1,71 @@
+//  Changelog.txt
+
+bm2017-may-26
+
+- fixed qvaluestack.h::pop2() .. QT2 original QValueStack.pop() has
+ different semantics than std::stack.pop(). I added .pop2() and altered
+ the source to use the new version. Now everything compiles.
+ examples/xmlquotes now works. Correct compilation depends upon xml parsing.
+
+- The code is compiled on 32-bit Debian 8.8
+ I changed "-Wall" to "-w" because there were so many trivial warnings.
+ I prefer not to have warnings but fixing these ambiguities in strange
+ code could actually introduce bugs.  Warnings should be fixed all
+ during developement so that important problems are not obscured.
+ 
+bm2017-may-25
+ - qvaluestack.h now has a thin wrapper around std::stack
+   Everything compiles but there is still some issue with QString template
+   
+bm2017-may-24
+ - added Changelog.txt
+ - modified Configs/Linux-g++-shared
+ - modified qvaluestack.h to allow full compile to proceed
+
+Observations:
+  QValueStack was released with GCC-3.0. It fails with improved compilers.
+  The current goal is with GCC-4.9.2 on Debian 8.x   With the patch to
+  qvaluestack, the QT libraries compile, the tutorials and most of the
+  examples run.  However, the designer does not compile because an XML
+  parsing error.
+
+  The designer uses QStack but the XML parser in qml.h uses QValueStack.
+  So my thinking is to replace QValueStack with QStack.
+
+------- preliminary notes ------------------------------------------
+Qt232 can compile on Debian 8 (Jessie). Here is setup:-
+  sudo apt-get install g++
+  sudo apt-get install libx11-dev
+  sudo apt-get install libxext-dev
+  sudo apt-get install zlib1g-dev
+
+There are many warnings about strings so adjust configs/linux-g++-shared
+   SYSCONF_CXXFLAGS	= -pipe -O2 -w
+   SYSCONF_CFLAGS	= -pipe -O2 -w
+
+cd /usr/local/qt
+configure
+
+It is important to read "porting.doc"
+Also, try "grep -ri danger * | less"
+
+There is an issue with templates where QValueStack extends QValueList.
+According to docs, QValueList::remove(p) expects p=Iterator but
+g++ 4.9.2 disagrees. Note below p='const char*'
+
+//  ------ compile error for "remove (this->fromLast)" -------
+
+g++  -c -I/usr/X11R6/include -I/home/bobmc/qt/qt232/include -I/usr/X11R6/include -pipe -O2 -w -fpermissive -fPIC -DQT_BUILTIN_GIF_READER=0 -DQT_NO_IMAGEIO_JPEG -DQT_NO_IMAGEIO_MNG -DQT_NO_SM_SUPPORT -DQT_NO_XKB  -I/home/bobmc/qt/qt232/src/3rdparty/zlib -I/home/bobmc/qt/qt232/src/3rdparty/libpng  -o widgets/qtextbrowser.o widgets/qtextbrowser.cpp
+
+In file included from widgets/qtextbrowser.cpp:46:0:
+/home/bobmc/qt/qt232/include/qvaluestack.h: In
+   instantiation of ‘T QValueStack<T>::pop() [with T = QString]’:
+   widgets/qtextbrowser.cpp:312:40:   required from here
+   
+/home/bobmc/qt/qt232/include/qvaluestack.h:57:31:
+   error: cannot convert ‘QValueList<QString>::Iterator
+   {aka QValueListIterator<QString>}’ to ‘const char*’
+   for argument ‘1’ to ‘int remove(const char*)’
+            remove( this->fromLast() );
+                               ^
+Makefile:495: recipe for target 'widgets/qtextbrowser.o' failed
