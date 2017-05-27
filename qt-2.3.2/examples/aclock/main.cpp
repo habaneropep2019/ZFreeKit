@@ -14,6 +14,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "qvaluestack.h"
+#include <iostream>
+using namespace std;
 
 void test1(){
    std::stack<int> st;
@@ -32,17 +34,19 @@ void test1(){
 
 void test3(){
    QValueStack<QString> st2;
-    st2.push("1");
-    st2.push("2");
-    st2.push("3");
-    st2.push("4");
-    st2.push("5");
+    st2.push("111111");
+    st2.push("222222");
+    st2.push("333333");
+    st2.push("444444");
+    st2.push("555555");
     int c=0;
     while( !st2.isEmpty() ){
        //st2.pop2();
-       QString& s  = st2.pop2();
-       printf("Qstrs: %d\n",c++);
+       QString qs  = st2.pop2();
+       cout << qs.latin1() << "\n";
+       //printf("Qstrs: %d\n",c++);
     }
+
 }
 
 void test2(){
@@ -81,4 +85,5 @@ int main( int argc, char **argv )
     delete clock;
     return result;
    */
-}
+}  // main
+
