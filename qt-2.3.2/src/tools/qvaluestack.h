@@ -56,15 +56,15 @@ class Q_EXPORT QValueStack
    }
 
    // use QT semantics, hide std::stack
-   const T& pop2() const {
-      const T& d = st.top();
+   const T pop2() const {
+      const T d = st.top();
       st.pop();
       return d;
    }
    
    // use QT semantics, hide std::stack
-   T& pop2() {
-      T& d = st.top();
+   T pop2() {
+      T d = st.top();
       st.pop();
       return d;
    }
