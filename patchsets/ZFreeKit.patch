@@ -1,0 +1,336 @@
+Only in ZFreeKit-updates: Changelog.txt
+diff -ur ZFreeKit-master/qt-2.3.2/configs/linux-g++-shared ZFreeKit-updates/qt-2.3.2/configs/linux-g++-shared
+--- ZFreeKit-master/qt-2.3.2/configs/linux-g++-shared	2017-05-27 11:13:31.000000000 -0500
++++ ZFreeKit-updates/qt-2.3.2/configs/linux-g++-shared	2017-05-27 11:14:46.000000000 -0500
+@@ -77,8 +77,12 @@
+ SYSCONF_LINK_LIB_STATIC	= rm -f $(DESTDIR)$(SYSCONF_LINK_TARGET_STATIC) ; \
+ 				 $(SYSCONF_AR) $(DESTDIR)$(SYSCONF_LINK_TARGET_STATIC) $(OBJECTS) $(OBJMOC) 
+ # Compiling application source
+-SYSCONF_CXXFLAGS	= -pipe -O2 -Wall -W
+-SYSCONF_CFLAGS		= -pipe -O2 -Wall -W
++
++#SYSCONF_CXXFLAGS	= -pipe -O2 -Wall -W
++#SYSCONF_CFLAGS		= -pipe -O2 -Wall -W
++SYSCONF_CXXFLAGS	= -pipe -O2 -w
++SYSCONF_CFLAGS		= -pipe -O2 -w
++
+ # Default link type (static linking is still be used where required)
+ SYSCONF_LINK_LIB	= $(SYSCONF_LINK_LIB_SHARED)
+ SYSCONF_LINK_TARGET	= $(SYSCONF_LINK_TARGET_SHARED)
+diff -ur ZFreeKit-master/qt-2.3.2/examples/aclock/main.cpp ZFreeKit-updates/qt-2.3.2/examples/aclock/main.cpp
+--- ZFreeKit-master/qt-2.3.2/examples/aclock/main.cpp	2017-05-27 11:13:31.000000000 -0500
++++ ZFreeKit-updates/qt-2.3.2/examples/aclock/main.cpp	2017-05-27 11:14:46.000000000 -0500
+@@ -10,19 +10,80 @@
+ 
+ #include "aclock.h"
+ #include <qapplication.h>
++#include <stack>
++#include <stdio.h>
++#include <stdlib.h>
++#include "qvaluestack.h"
++#include <iostream>
++using namespace std;
++
++void test1(){
++   std::stack<int> st;
++    st.push(1);
++    st.push(2);
++    st.push(3);
++    st.push(4);
++    st.push(5);
++    int x;
++    while( !st.empty() ){
++       x = st.top();
++       printf("Int: %d\n",x);
++       st.pop();
++    }
++}
++
++void test3(){
++   QValueStack<QString> st2;
++    st2.push("111111");
++    st2.push("222222");
++    st2.push("333333");
++    st2.push("444444");
++    st2.push("555555");
++    int c=0;
++    while( !st2.isEmpty() ){
++       //st2.pop2();
++       QString qs  = st2.pop2();
++       cout << qs.latin1() << "\n";
++       //printf("Qstrs: %d\n",c++);
++    }
++
++}
++
++void test2(){
++   QValueStack<int> st;
++    st.push(1);
++    st.push(2);
++    st.push(3);
++    st.push(4);
++    st.push(5);
++    int c=0;
++    while( !st.isEmpty() ){
++       int x = st.pop2();
++       printf("Ints: %d\n",x);
++    }
++}
+ 
+ 
+ int main( int argc, char **argv )
+ {
++   //emit message( "Printing completed", 2000 );
++   test1();
++   test2();
++   test3();
++    
++   /*
+     QApplication a( argc, argv );
+     AnalogClock *clock = new AnalogClock;
+     if ( argc == 2 && strcmp( argv[1], "-transparent" ) == 0 )
+ 	clock->setAutoMask( TRUE );
+-    clock->resize( 100, 100 );
++    clock->resize( 100, 100 ); 
++
+     a.setMainWidget( clock );
+     clock->setCaption("Qt Example - Analog Clock");
+     clock->show();
+     int result = a.exec();
+     delete clock;
+     return result;
+-}
++   */
++}  // main
++
+diff -ur ZFreeKit-master/qt-2.3.2/src/tools/qvaluestack.h ZFreeKit-updates/qt-2.3.2/src/tools/qvaluestack.h
+--- ZFreeKit-master/qt-2.3.2/src/tools/qvaluestack.h	2017-05-27 11:13:31.000000000 -0500
++++ ZFreeKit-updates/qt-2.3.2/src/tools/qvaluestack.h	2017-05-27 11:14:46.000000000 -0500
+@@ -1,64 +1,110 @@
+ /****************************************************************************
+-** $Id: qt/src/tools/qvaluestack.h   2.3.2   edited 2001-01-26 $
+-**
+-** Definition of QValueStack class
+-**
+-** Created : 990925
+-**
+-** Copyright (C) 1992-2000 Trolltech AS.  All rights reserved.
+-**
+-** This file is part of the tools module of the Qt GUI Toolkit.
+-**
+-** This file may be distributed under the terms of the Q Public License
+-** as defined by Trolltech AS of Norway and appearing in the file
+-** LICENSE.QPL included in the packaging of this file.
+-**
+-** This file may be distributed and/or modified under the terms of the
+-** GNU General Public License version 2 as published by the Free Software
+-** Foundation and appearing in the file LICENSE.GPL included in the
+-** packaging of this file.
+-**
+-** Licensees holding valid Qt Enterprise Edition or Qt Professional Edition
+-** licenses may use this file in accordance with the Qt Commercial License
+-** Agreement provided with the Software.
+-**
+-** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
+-** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
+-**
+-** See http://www.trolltech.com/pricing.html or email sales@trolltech.com for
+-**   information about Qt Commercial License Agreements.
+-** See http://www.trolltech.com/qpl/ for QPL licensing information.
+-** See http://www.trolltech.com/gpl/ for GPL licensing information.
+-**
+-** Contact info@trolltech.com if any conditions of this licensing are
+-** not clear to you.
+-**
+-**********************************************************************/
++ ** $Id: qt/src/tools/qvaluestack.h   2.3.2   edited 2001-01-26 $
++ **
++ ** Definition of QValueStack class
++ **
++ ** Created : 990925
++ **
++ ** Copyright (C) 1992-2000 Trolltech AS.  All rights reserved.
++ **
++ ** This file is part of the tools module of the Qt GUI Toolkit.
++ **
++ ** This file may be distributed under the terms of the Q Public License
++ ** as defined by Trolltech AS of Norway and appearing in the file
++ ** LICENSE.QPL included in the packaging of this file.
++ **
++ ** This file may be distributed and/or modified under the terms of the
++ ** GNU General Public License version 2 as published by the Free Software
++ ** Foundation and appearing in the file LICENSE.GPL included in the
++ ** packaging of this file.
++ **
++ ** Licensees holding valid Qt Enterprise Edition or Qt Professional Edition
++ ** licenses may use this file in accordance with the Qt Commercial License
++ ** Agreement provided with the Software.
++ **
++ ** This file is provided AS IS with NO WARRANTY OF ANY KIND, INCLUDING THE
++ ** WARRANTY OF DESIGN, MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE.
++ **
++ ** See http://www.trolltech.com/pricing.html or email sales@trolltech.com for
++ **   information about Qt Commercial License Agreements.
++ ** See http://www.trolltech.com/qpl/ for QPL licensing information.
++ ** See http://www.trolltech.com/gpl/ for GPL licensing information.
++ **
++ ** Contact info@trolltech.com if any conditions of this licensing are
++ ** not clear to you.
++ **
++ **********************************************************************/
+ 
+ #ifndef QVALUESTACK_H
+ #define QVALUESTACK_H
+ 
++
++#if 1
++
++#include <stack>		// STL
++template <typename T>
++class Q_EXPORT QValueStack
++{
++ private: std::stack<T> st;
++
++ public:
++   QValueStack() {}
++   ~QValueStack() {}
++
++   void  push( const T& d ) {
++      st.push(d);
++   }
++
++   // use QT semantics, hide std::stack
++   const T pop2() const {
++      const T d = st.top();
++      st.pop();
++      return d;
++   }
++   
++   // use QT semantics, hide std::stack
++   T pop2() {
++      T d = st.top();
++      st.pop();
++      return d;
++   }
++
++   T& top() { return st.top();}
++   const T& top() const { st.top(); }
++
++   bool isEmpty() const { return st.empty(); }
++
++   int count() const { return st.size(); }
++
++   void clear(){
++      while (!st.empty()) {
++	 st.pop();
++      }
++   }
++};
++
++// --------- before ---------------------------
++#else
+ #ifndef QT_H
+ #include "qvaluelist.h"
+ #endif // QT_H
+ 
+-
+ template<class T>
+ class Q_EXPORT QValueStack : public QValueList<T>
+ {
+-public:
+-    QValueStack() {}
++ public:
++   QValueStack() {}
+    ~QValueStack() {}
+-    void  push( const T& d ) { append(d); }
+-    T pop()
+-    {
+-	T elem( this->last() );
+-	if ( !this->isEmpty() )
+-	    remove( this->fromLast() );
+-	return elem;
+-    }
+-    T& top() { return this->last(); }
+-    const T& top() const { return this->last(); }
++   void  push( const T& d ) { append(d); }
++   T pop()
++   {
++      T elem( this->last() );
++      // fail: if ( !this->isEmpty() )   remove( this->fromLast() );
++      return elem;
++   }
++   T& top() { return this->last(); }
++   const T& top() const { return this->last(); }
+ };
+-
+ #endif
++
++#endif  // #define QVALUESTACK_H
+diff -ur ZFreeKit-master/qt-2.3.2/src/widgets/qtextbrowser.cpp ZFreeKit-updates/qt-2.3.2/src/widgets/qtextbrowser.cpp
+--- ZFreeKit-master/qt-2.3.2/src/widgets/qtextbrowser.cpp	2017-05-27 11:13:31.000000000 -0500
++++ ZFreeKit-updates/qt-2.3.2/src/widgets/qtextbrowser.cpp	2017-05-27 11:14:46.000000000 -0500
+@@ -309,8 +309,8 @@
+ {
+     if ( d->stack.count() <= 1)
+ 	return;
+-    d->forwardStack.push( d->stack.pop() );
+-    setSource( d->stack.pop() );
++    d->forwardStack.push( d->stack.pop2() );
++    setSource( d->stack.pop2() );
+     emit forwardAvailable( TRUE );
+ }
+ 
+@@ -324,7 +324,7 @@
+ {
+     if ( d->forwardStack.isEmpty() )
+ 	return;
+-    setSource( d->forwardStack.pop() );
++    setSource( d->forwardStack.pop2() );
+     emit forwardAvailable( !d->forwardStack.isEmpty() );
+ }
+ 
+diff -ur ZFreeKit-master/qt-2.3.2/src/xml/qxml.cpp ZFreeKit-updates/qt-2.3.2/src/xml/qxml.cpp
+--- ZFreeKit-master/qt-2.3.2/src/xml/qxml.cpp	2017-05-27 11:13:31.000000000 -0500
++++ ZFreeKit-updates/qt-2.3.2/src/xml/qxml.cpp	2017-05-27 11:14:46.000000000 -0500
+@@ -510,7 +510,7 @@
+ void QXmlNamespaceSupport::popContext()
+ {
+     if( !nsStack.isEmpty() )
+-	ns = nsStack.pop();
++	ns = nsStack.pop2();
+ }
+ 
+ /*!
+@@ -2499,7 +2499,7 @@
+ 		goto error;
+ 	    }
+ 	    // ... followed by endElement...
+-	    if ( !contentHnd->endElement( uri, lname, tags.pop() ) ) {
++	    if ( !contentHnd->endElement( uri, lname, tags.pop2() ) ) {
+ 		goto error;
+ 	    }
+ 	    // ... followed by endPrefixMapping
+@@ -2523,12 +2523,12 @@
+ 		goto error;
+ 	    }
+ 	    // ... followed by endElement
+-	    if ( !contentHnd->endElement( "","",tags.pop() ) ) {
++	    if ( !contentHnd->endElement( "","",tags.pop2() ) ) {
+ 		goto error;
+ 	    }
+ 	}
+     } else {
+-	tags.pop();
++	tags.pop2();
+ 	d->namespaceSupport.popContext();
+     }
+     return TRUE;
+@@ -2544,7 +2544,7 @@
+ {
+ 
+     // pop the stack and compare it with the name
+-    if ( tags.pop() != name() ) {
++    if ( tags.pop2() != name() ) {
+ 	d->error = XMLERR_TAGMISMATCH;
+ 	return FALSE;
+     }
