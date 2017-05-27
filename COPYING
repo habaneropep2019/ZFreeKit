@@ -2,6 +2,6 @@ A quick note on licensing.
 
 The contents of the ZFreeKit collection are licensed under several licenses.
 
-Because ZFreeKit contains patchsets for the Qt library, those components are licensed under the Q Public License.
-
-Other components are licensed under the GNU GPL.
+ZFreeKit includes the Qt library, which is dual-licensed under the QPL (Q Public License) and the GNU GPLv2.
+Because some applications that use Qt2 may use it under QPL licensing, we are opting to dual-license all of our changes and updates to Qt.
+This means that we provide all of our changes and updates via patches in order to comply with the QPL. These patches can be used under either license.
