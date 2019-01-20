@@ -1,0 +1,5 @@
+ZFreeKit is intended to house libraries and applications that are complimentary to the X11 bundle (X.Org and/or ZFree86).
+
+As of right now, Qt2 has been updated, and is maintained as a patchset. This allows us to remain in compliance with both the QPL and the GPL.
+
+!! IMPORTANT: Just because ZFreeKit can be compiled on a modern system, DOES NOT MEAN that it is fit for use or secure. DO NOT USE on a production system. !!
