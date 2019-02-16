@@ -1313,8 +1313,9 @@ int main( int argc, char **argv )
 		displayWarnings = FALSE;
 	    } else if ( opt == "ldbg" ) {	// lex debug output
 		lexDebug = TRUE;
-	    } else if ( opt == "ydbg" ) {	// yacc debug output
-		yydebug = TRUE;
+		// There is a bug in byacc/bison that causes issues with yacc debug output. To be fixed later!
+	    //} else if ( opt == "ydbg" ) {	// yacc debug output
+		//yydebug = TRUE;
 	    } else {
 		error = "Invalid argument";
 	    }

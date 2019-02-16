@@ -1,5 +1,17 @@
 //  Changelog.txt
 
+Alec Bloss (binaryblob01) February 13, 2019
+-----------
+- Fails to compile on newer systems due to requiring AT&T-style yacc. Update Makefile.in in src/moc/ to use byacc instead of bison.
+GNU bison will not work.
+
+- byacc error caused by what I presume to be a bug in bison/byacc with yydebug. Modified src/moc/moc.y to disable yydebug, for now.
+Need permanent fix later. Basically:
+With bison 2.7 YYDEBUG will be set to 0 if it was not set, then #ifdef
+YYDEBUG returns true, but bison 2.7 treets YYDEBUG 0 as not set.
+
+- Workaround in configs for linux-g++ platforms that complain about not being able to find ft2build.h, even though it's present.
+
 bm2017-may-26
 
 - fixed qvaluestack.h::pop2() .. QT2 original QValueStack.pop() has

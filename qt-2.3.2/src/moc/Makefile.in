@@ -425,7 +425,7 @@ qfile_unix.o: ../tools/qfile_unix.cpp \
 ####### Lex/yacc programs and options
 
 LEX	=	flex
-YACC	=	yacc -d
+YACC	=	byacc -d
 
 ####### Lex/yacc files
 
