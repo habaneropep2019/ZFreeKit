@@ -3,6 +3,8 @@
 # Configures to build the Qt library
 #
 # Copyright 1999-2001 Trolltech AS.  All rights reserved.
+# Some portions copyright 2021 Alec Bloss. These sections are prefixed with #AB#.
+#  These additions are released under the same dual-license scheme (QPL/GPL) as the original free edition.
 #
 
 # To remove the need for the first test, do this:
@@ -50,6 +52,42 @@ else
 	exit 1
     fi
 fi
+
+#AB#
+# Check for X11 libraries
+if [ -z `find /usr/include/X11 -name Xlib.h` ]
+	then
+		echo "FATAL: No Xlib.h found in /usr/include/X11 or its subdirectories."
+		echo "You may be missing libx11-dev."
+		exit 1
+	else
+		echo "INFO: Found Xlib at `find /usr/include/X11 -name Xlib.h`"
+fi
+
+if [ -z `find /usr/include/X11 -name shape.h` ]
+	then
+		echo "FATAL: No shape.h found in /usr/include/X11 or its subdirectories."
+		echo "You may be missing libXext-dev."
+		exit 1
+	else
+		echo "INFO: Found libXext at `find /usr/include/X11 -name shape.h`"
+fi
+	
+#AB#
+# Check for GGE libraries
+if [ ! -e /opt/gge/kernel ]
+	then
+		echo "INFO: No GGE kernel found. Not enabling."
+	else
+		echo "INFO: GGE kernel found. Enabling General Graphics Engine Support."
+		QT_GGEdev=yes
+fi
+
+#AB#
+# Create lib directory
+
+mkdir $QT2DIR/lib
+
 
 # Check licensed modules
 MODULES=`$MAKE -f src/Makefile.in listallmodules`

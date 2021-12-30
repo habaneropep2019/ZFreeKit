@@ -6,6 +6,8 @@ A fork of Qt2 is maintained as a patchset. This allows us to remain in complianc
 
 See CHANGELOG-ZFreeKit.qt2 for changes related to Qt2 fork.
 
+The Qt2 portion is known to compile and work on both x86 and amd64 platforms, when configured with './configure -shared', and no other options.
+
 12/29/2021
 ============
 
