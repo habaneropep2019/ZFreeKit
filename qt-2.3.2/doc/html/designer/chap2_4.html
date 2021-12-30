@@ -62,15 +62,15 @@ int main( int argc, char* argv[] )
 }</pre>
 			<p>Save this as <tt class="FILENAME">PizzaEntryTest.cpp</tt>. Now you can start building your program. On a Unix system with the g++ compiler, these could be your command lines:</p>
 			<pre class="SCREEN">moc -o moc_PizzaEntry.cpp PizzaEntry.h
-g++ -I$QTDIR/include PizzaEntry.cpp PizzaEntryTest.cpp &bsol;
-moc_PizzaEntry.cpp -L$QTDIR/lib -lqt</pre>
+g++ -I$QT2DIR/include PizzaEntry.cpp PizzaEntryTest.cpp &bsol;
+moc_PizzaEntry.cpp -L$QT2DIR/lib -lqt</pre>
 			<p>and on a Windows system with the Microsoft Visual C++ compiler:</p>
 			<pre class="SCREEN">moc -o moc_PizzaEntry.cpp PizzaEntry.h
-cl -c -nologo -I%QTDIR%/include -FoPizzaEntry.obj PizzaEntry.cpp
-cl -c -nologo -I%QTDIR%/include -FoPizzaEntryTest.obj PizzaEntryTest.cpp
-cl -c -nologo -I%QTDIR%/include -Fomoc_PizzaEntry.obj moc_PizzaEntry.cpp
+cl -c -nologo -I%QT2DIR%/include -FoPizzaEntry.obj PizzaEntry.cpp
+cl -c -nologo -I%QT2DIR%/include -FoPizzaEntryTest.obj PizzaEntryTest.cpp
+cl -c -nologo -I%QT2DIR%/include -Fomoc_PizzaEntry.obj moc_PizzaEntry.cpp
 link /NOLOGO /SUBSYSTEM:windows /OUT:PizzaEntry PizzaEntry.obj PizzaEntryTest.obj &bsol;
-    moc_PizzaEntry.obj %QTDIR%/lib/qt.lib kernel32.lib user32.lib gdi32.lib &bsol;
+    moc_PizzaEntry.obj %QT2DIR%/lib/qt.lib kernel32.lib user32.lib gdi32.lib &bsol;
     comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib
     imm32.lib winmm.lib wsock32.lib</pre>
 			<p>If you use a different compiler, you might have to change the compiler command and some of the options. If you do not know what the line starting with <b class="COMMAND">moc</b> is for, please see the Qt Tutorial or <i class="EMPHASIS">Programming with Qt</i>.</p>

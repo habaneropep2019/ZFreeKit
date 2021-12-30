@@ -138,23 +138,23 @@ uic -i PizzaEntry.h -o PizzaEntry.cpp pizza.ui
 moc -o moc_PizzaEntry.cpp PizzaEntry.h
 moc -o moc_PizzaEntryImpl.cpp PizzaEntryImpl.h
 moc -o moc_PizzaEntryTest.cpp PizzaEntryTest.cpp
-g++ -I$QTDIR/include PizzaEntry.cpp PizzaEntryTest.cpp &bsol;
+g++ -I$QT2DIR/include PizzaEntry.cpp PizzaEntryTest.cpp &bsol;
     PizzaEntryImpl.cpp moc_PizzaEntry.cpp moc_PizzaEntryImpl.cpp &bsol;
-    -L$QTDIR/lib -lqt</pre>
+    -L$QT2DIR/lib -lqt</pre>
 			<p>and for Windows with Visual C++:</p>
 			<pre class="SCREEN">uic -o PizzaEntry.h pizza.ui
 uic -i PizzaEntry.h -o PizzaEntry.cpp pizza.ui
 moc -o moc_PizzaEntry.cpp PizzaEntry.h
 moc -o moc_PizzaEntryImpl.cpp PizzaEntryImpl.h
 moc -o moc_PizzaEntryTest.cpp PizzaEntry.cpp
-cl -c -nologo -I%QTDIR%/include -FoPizzaEntry.obj PizzaEntry.cpp
-cl -c -nologo -I%QTDIR%/include -FoPizzaEntryImpl.obj PizzaEntryImpl.cpp
-cl -c -nologo -I%QTDIR%/include -FoPizzaEntryTest.obj PizzaEntryTest.cpp
-cl -c -nologo -I%QTDIR%/include -Fomoc_PizzaEntry.obj moc_PizzaEntry.cpp
-cl -c -nologo -I%QTDIR%/include -Fomoc_PizzaEntryImpl.obj moc_PizzaEntryImpl.cpp
+cl -c -nologo -I%QT2DIR%/include -FoPizzaEntry.obj PizzaEntry.cpp
+cl -c -nologo -I%QT2DIR%/include -FoPizzaEntryImpl.obj PizzaEntryImpl.cpp
+cl -c -nologo -I%QT2DIR%/include -FoPizzaEntryTest.obj PizzaEntryTest.cpp
+cl -c -nologo -I%QT2DIR%/include -Fomoc_PizzaEntry.obj moc_PizzaEntry.cpp
+cl -c -nologo -I%QT2DIR%/include -Fomoc_PizzaEntryImpl.obj moc_PizzaEntryImpl.cpp
 link /NOLOGO /SUBSYSTEM:windows /OUT:PizzaEntry PizzaEntry.obj PizzaEntryTest.obj &bsol;
     PizzaEntryImpl.obj moc_PizzaEntry.obj moc_PizzaEntryImpl.obj &bsol;
-    %QTDIR%/lib/qt.lib kernel32.lib user32.lib gdi32.lib &bsol;
+    %QT2DIR%/lib/qt.lib kernel32.lib user32.lib gdi32.lib &bsol;
     comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib &bsol;
     imm32.lib winmm.lib wsock32.lib</pre>
 			<p>Now run the program and see what happens when you click either <span class="GUILABEL">Cancel</span> or <span class="GUILABEL">OK</span>.<br>

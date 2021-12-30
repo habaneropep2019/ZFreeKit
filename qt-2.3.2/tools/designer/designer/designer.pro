@@ -104,8 +104,8 @@ INTERFACES	= listboxeditor.ui \
 		
 TARGET	= designer
 INCLUDEPATH	= ../shared ../util ../../../src/3rdparty/zlib/
-unix:LIBS	+= -L$(QTDIR)/lib -lqutil 
-win32:LIBS	+= $(QTDIR)/lib/qutil.lib
+unix:LIBS	+= -L$(QT2DIR)/lib -lqutil 
+win32:LIBS	+= $(QT2DIR)/lib/qutil.lib
 DEFINES	+= DESIGNER
-DESTDIR	= $(QTDIR)/bin
+DESTDIR	= $(QT2DIR)/bin
 win32-msvc:RC_FILE = designer.rc

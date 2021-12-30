@@ -464,7 +464,7 @@ int main( int argc, char ** argv )
     if (argc &gt; 1)
         home = argv[1];
     else
-        home = QString(getenv("QTDIR")) + "/doc/html/index.html";
+        home = QString(getenv("QT2DIR")) + "/doc/html/index.html";
 
     HelpWindow *help = new HelpWindow(home, ".", 0, "help viewer");
     help-&gt;<a name="setCaption"></a><a href="qwidget.html#d6a291">setCaption</a>("Qt Example - Helpviewer");

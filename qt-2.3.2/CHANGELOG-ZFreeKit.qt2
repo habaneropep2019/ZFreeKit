@@ -1,0 +1,4 @@
+12/29/2021
+============
+
+- Rename QTDIR to QT2DIR to avoid conflict with existing Qt/KDE/Plasma installations

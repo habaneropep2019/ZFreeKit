@@ -11,12 +11,12 @@ CC	=	gcc
 CXX	=	g++
 CFLAGS	=	-pipe -Wall -W -O2 -DNO_DEBUG
 CXXFLAGS=	-pipe -Wall -W -O2 -DNO_DEBUG
-INCPATH	=	-I$(QTDIR)/include
+INCPATH	=	-I$(QT2DIR)/include
 LINK	=	g++
 LFLAGS	=	
-LIBS	=	$(SUBLIBS) -L$(QTDIR)/lib -L/usr/X11R6/lib -lqt -lXext -lX11 -lm
-MOC	=	$(QTDIR)/bin/moc
-UIC	=	$(QTDIR)/bin/uic
+LIBS	=	$(SUBLIBS) -L$(QT2DIR)/lib -L/usr/X11R6/lib -lqt -lXext -lX11 -lm
+MOC	=	$(QT2DIR)/bin/moc
+UIC	=	$(QT2DIR)/bin/uic
 
 TAR	=	tar -cf
 GZIP	=	gzip -9f

@@ -33,7 +33,7 @@ Qt programs need the following components of the Qt distribution: <dl>
 <dt><b>Header files - Compile time</b>
 <p>
 <dd>Programmers need to include the Qt header files. Those with a
-command-line compiler will typically use options such as <code>/I%QTDIR%\include</code> or <code>-I${QTDIR}/include.</code>  They will need the header
+command-line compiler will typically use options such as <code>/I%QT2DIR%\include</code> or <code>-I${QT2DIR}/include.</code>  They will need the header
 files of the version of Qt they wish to build programs with.  The
 header files are in the <code>include</code> subdirectory of Qt distributions.
 <p>
@@ -45,7 +45,7 @@ found in the <code>bin</code> subdirectory of Qt distributions.
 <dt><b>Static or shared libraries - Link time</b>
 <p>
 <dd>Programmers need to link with static or shared libraries. Those with a
-command-line compiler will typically use options such as <code>/L%QTDIR%\lib\qt.lib</code> or <code>-L${QTDIR}/lib</code> <code>-lqt.</code>  They will need the
+command-line compiler will typically use options such as <code>/L%QT2DIR%\lib\qt.lib</code> or <code>-L${QT2DIR}/lib</code> <code>-lqt.</code>  They will need the
 libraries of the version of Qt they wish to build programs with.  The
 libraries are in the <code>lib</code> subdirectory of Qt distributions.
 <p>
@@ -95,7 +95,7 @@ of Qt 2.x (<code>qt2</code> or the like) and Qt 1.4x (<code>qt1</code>
 or the like).
 <p>
 </ul>Just install those 3 packages. You may need to set the
-environment variable <code>QTDIR.</code>
+environment variable <code>QT2DIR.</code>
 <p>
 <dt><b>Developers building for two versions of Qt on Unix
 - Qt sources</b>
@@ -115,14 +115,14 @@ Get source distributions of both Qt 1.4x and Qt 2.x. <ol>
 <pre>$ cd /opt
 $ gunzip -c qt-1.44.tar.gz | tar xf -
 $ cd qt-1.44
-$ setenv QTDIR /opt/qt-1.44
+$ setenv QT2DIR /opt/qt-1.44
 $ configure [options]
 $ make
 
 $ cd /opt
 $ gunzip -c qt-2.1.0.tar.gz | tar xf -
 $ cd qt-2.1.0
-$ setenv QTDIR /opt/qt-2.1.0
+$ setenv QT2DIR /opt/qt-2.1.0
 $ configure [options]
 $ make
 </pre>
@@ -140,18 +140,18 @@ ln -s /opt/qt-2.1.0/lib/libqt.so.2 .
 <p>
 To develop with Qt 1.4x use:
 <p>
-<pre>setenv QTDIR /opt/qt-1.44
-setenv PATH ${QTDIR}/bin:${PATH}
+<pre>setenv QT2DIR /opt/qt-1.44
+setenv PATH ${QT2DIR}/bin:${PATH}
 </pre>
 <p>
 To develop with Qt 2.x use:
 <p>
-<pre>setenv QTDIR /opt/qt-2.1.0
-setenv PATH ${QTDIR}/bin:${PATH}
+<pre>setenv QT2DIR /opt/qt-2.1.0
+setenv PATH ${QT2DIR}/bin:${PATH}
 </pre>
 <p>
 Setting the <code>PATH</code> ensures that the proper version of moc is being
-used.  Your <code>Makefile</code> should refer to <code>${QTDIR}/include</code> and <code>${QTDIR}/lib</code> to include the proper header files and link with the
+used.  Your <code>Makefile</code> should refer to <code>${QT2DIR}/include</code> and <code>${QT2DIR}/lib</code> to include the proper header files and link with the
 proper libraries.
 <p>
 </dl>

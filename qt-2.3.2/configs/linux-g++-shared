@@ -6,7 +6,7 @@ DASHCROSS		=
 
 # Compiling with support libraries
 SYSCONF_CXXFLAGS_X11	= -I/usr/X11R6/include
-SYSCONF_CXXFLAGS_QT	= -I$(QTDIR)/include
+SYSCONF_CXXFLAGS_QT	= -I$(QT2DIR)/include
 SYSCONF_CXXFLAGS_OPENGL	= -I/usr/X11R6/include
 
 # Compiling YACC output
@@ -14,7 +14,7 @@ SYSCONF_CXXFLAGS_YACC     = -Wno-unused -Wno-parentheses
 
 # Linking with support libraries
 SYSCONF_RPATH_X11	= -Wl,-rpath,/usr/X11R6/lib
-SYSCONF_RPATH_QT	= -Wl,-rpath,$(QTDIR)/lib
+SYSCONF_RPATH_QT	= -Wl,-rpath,$(QT2DIR)/lib
 SYSCONF_RPATH_OPENGL	= -Wl,-rpath,/usr/X11R6/lib
 
 # Linking with support libraries
@@ -22,7 +22,7 @@ SYSCONF_RPATH_OPENGL	= -Wl,-rpath,/usr/X11R6/lib
 SYSCONF_LFLAGS_X11	= -L/usr/X11R6/lib
 SYSCONF_LIBS_X11	= -lXext -lX11 -lm
 # Qt, Qt+OpenGL
-SYSCONF_LFLAGS_QT	= -L$(QTDIR)/lib
+SYSCONF_LFLAGS_QT	= -L$(QT2DIR)/lib
 SYSCONF_LIBS_QT		= -lqt$(QT_THREAD_SUFFIX)
 SYSCONF_LIBS_QT_OPENGL	= 
 # OpenGL
@@ -46,10 +46,10 @@ SYSCONF_LFLAGS_THREAD	=
 SYSCONF_LIBS_THREAD	=  -lpthread
 
 # Meta-object compiler
-SYSCONF_MOC		= $(QTDIR)/bin/moc
+SYSCONF_MOC		= $(QT2DIR)/bin/moc
 
 # UI compiler
-SYSCONF_UIC		= $(QTDIR)/bin/uic
+SYSCONF_UIC		= $(QT2DIR)/bin/uic
 
 # Linking shared libraries
 #   - Build the $(TARGET) library, eg. lib$(TARGET).so.2.2.2
@@ -77,8 +77,12 @@ SYSCONF_LINK_TARGET_STATIC = lib$(TARGET).a
 SYSCONF_LINK_LIB_STATIC	= rm -f $(DESTDIR)$(SYSCONF_LINK_TARGET_STATIC) ; \
 				 $(SYSCONF_AR) $(DESTDIR)$(SYSCONF_LINK_TARGET_STATIC) $(OBJECTS) $(OBJMOC) 
 # Compiling application source
-SYSCONF_CXXFLAGS	= -pipe -O2 -Wall -W
-SYSCONF_CFLAGS		= -pipe -O2 -Wall -W
+
+#SYSCONF_CXXFLAGS	= -pipe -O2 -Wall -W
+#SYSCONF_CFLAGS		= -pipe -O2 -Wall -W
+SYSCONF_CXXFLAGS	= -pipe -O2 -w
+SYSCONF_CFLAGS		= -pipe -O2 -w
+
 # Default link type (static linking is still be used where required)
 SYSCONF_LINK_LIB	= $(SYSCONF_LINK_LIB_SHARED)
 SYSCONF_LINK_TARGET	= $(SYSCONF_LINK_TARGET_SHARED)

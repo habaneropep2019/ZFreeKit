@@ -35,17 +35,17 @@ framebuffer you can use the
 <a href="qvfb-qws.html">Qt/Embedded virtual framebuffer</a>.
 <p>
 Change to a Linux console and select an example to run, e.g. examples/widgets.
-Make sure $QTDIR is set to the directory where you installed Qt/Embedded
-and add the $QTDIR/lib directory to $LD_LIBRARY_PATH, e.g.:
+Make sure $QT2DIR is set to the directory where you installed Qt/Embedded
+and add the $QT2DIR/lib directory to $LD_LIBRARY_PATH, e.g.:
 <pre>
-export QTDIR=$HOME/qt-<i>version</i>
-export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+export QT2DIR=$HOME/qt-<i>version</i>
+export LD_LIBRARY_PATH=$QT2DIR/lib:$LD_LIBRARY_PATH
 </pre>
 <p>
 Run the application with the <i>-qws</i> option:
 <p>
 <pre>
-cd $QTDIR/examples/widgets
+cd $QT2DIR/examples/widgets
 ./widgets -qws
 </pre>
 <p>

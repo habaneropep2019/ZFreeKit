@@ -6,5 +6,5 @@ SOURCES	= qprocess.cpp
 unix:SOURCES	+= qprocess_unix.cpp
 win32:SOURCES	+= qprocess_win.cpp
 TARGET		= qutil
-DESTDIR		= $(QTDIR)/lib
+DESTDIR		= $(QT2DIR)/lib
 VERSION		= 1.0.0

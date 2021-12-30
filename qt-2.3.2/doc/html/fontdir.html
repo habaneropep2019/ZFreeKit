@@ -21,7 +21,7 @@ height="100" src="face.png" alt="Home" border="0">
 <h1 align=center> The Qt/Embedded fontdir file</h1><br clear="all">
 <p>
 In order for Qt/Embedded to run a file called fontdir needs to exist.
-It should be in either $QTDIR/etc/fonts/ if QTDIR is defined when the
+It should be in either $QT2DIR/etc/fonts/ if QT2DIR is defined when the
 Qt/Embedded program is run, or /usr/local/qt-embedded/etc/fonts/ if not.
 <p>
 The format is as follows (also documented in qfontmanager_qws.cpp):
@@ -32,7 +32,7 @@ name is the name that Qt/Embedded will use for the font in font dialogues
 and from the point of view of QFont - e.g. Times
 <p>
 file is the path to the file, for example times.ttf or 
-/etc/fonts/times.ttf (the two are equivalent if QTDIR is defined to /
+/etc/fonts/times.ttf (the two are equivalent if QT2DIR is defined to /
 for example)
 <p>
 renderer is the name of the font renderer for the font - for Truetype
