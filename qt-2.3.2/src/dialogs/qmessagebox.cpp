@@ -652,13 +652,16 @@ void QMessageBox::init( int button0, int button1, int button2 )
     QT_NC_MSGBOX
 #else
 	*translatedTextAboutQt
-	    = tr( "<h3>About Qt</h3>"
+	    = tr( "<h3>About Qt2</h3>"
 		  "<p>This program uses Qt version %1, a multiplatform C++ "
 		  "GUI toolkit from Trolltech. Qt provides single-source "
 		  "portability across Windows 95/98/NT4/Me/2000, Linux, Solaris, "
 		  "HP-UX and many other versions of Unix with X11.</p>"
 		  "<p>See <tt>http://www.trolltech.com/qt/</tt> for more "
-		  "information.</p>" ).arg( QT_VERSION_STR );
+		  "information.</p>"
+	      "<p>This version of Qt2 is a fork, and is part of"
+	      "ZFreeKit Osiris. See <tt>https://github.com/habaneropep2019/ZFreeKit</tt>"
+	      "for more information and updates.</p>").arg( QT_VERSION_STR );
 #endif
 
 #ifdef QT_NO_RICHTEXT
