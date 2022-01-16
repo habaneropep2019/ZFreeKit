@@ -1,6 +1,7 @@
 01/16/2022
 ============
 - Update "About QT" message to indicate this is a fork and part of ZFreeKit.
+- Update filesystem names. Qt2 now becomes Osiris - although this rename is largely superficial at this point.
 
 01/02/2022
 ============
