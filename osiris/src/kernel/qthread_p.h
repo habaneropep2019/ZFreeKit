@@ -107,6 +107,8 @@ extern "C" int gettimeofday( struct timeval *, struct timezone * );
 #  undef  Q_USE_PTHREAD_MUTEX_SETKIND
 #  define Q_NORMAL_MUTEX_TYPE PTHREAD_MUTEX_ERRORCHECK
 #  define Q_RECURSIVE_MUTEX_TYPE PTHREAD_MUTEX_RECURSIVE
+#elif defined(__illumos__)
+#	define NULL nullptr
 #else
 // Fall through for systems we don't know about
 // #  warning "Assuming non-POSIX 1003.1c thread implementation. Talk to qt-bugs@trolltech.com."
@@ -152,7 +154,11 @@ public:
 #ifdef CHECK_RANGE
 	int ret =
 #endif
-	    mutex_init( &mutex, NULL, NULL );
+#if defined (__illumos__)
+	    mutex_init( &mutex, 0, 0 );
+#else
+    	mutex_init( &mutex, NULL, NULL );
+#endif
 
 #ifdef CHECK_RANGE
 	if( ret )
@@ -235,8 +241,12 @@ public:
 #ifdef CHECK_RANGE
 	int ret =
 #endif
-	    mutex_init( &mutex2, NULL, NULL );
 
+#if defined (__illumos__)
+	    mutex_init( &mutex2, 0, 0 );
+#else
+		mutex_init( &mutex2, NULL, NULL );
+#endif
 
 #ifdef CHECK_RANGE
 	if( ret )
@@ -350,9 +360,13 @@ public:
     {
 	that->d->running = TRUE;
 	that->d->finished = FALSE;
-
+#if defined (__illumos__)
+	int ret = thr_create( 0, 0, start_thread, that, THR_DETACHED,
+			      &thread_id );
+#else
 	int ret = thr_create( NULL, NULL, start_thread, that, THR_DETACHED,
 			      &thread_id );
+#endif
 
 #ifdef CHECK_RANGE
 	if (ret)
@@ -397,7 +411,11 @@ public:
 #ifdef CHECK_RANGE
 	int ret =
 #endif
-	    cond_init(&cond, NULL, NULL );
+#if defined (__illumos__)
+	    cond_init(&cond, 0, 0 );
+#else
+		cond_init(&cond, NULL, NULL );
+#endif
 
 #ifdef CHECK_RANGE
 	if( ret )
