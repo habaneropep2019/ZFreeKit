@@ -489,7 +489,7 @@ then
 	PLATFORMS="aix-g++ aix-xlc bsdi-g++ dgux-g++ dynix-g++ freebsd-g++
 	    hpux-acc hpux-cc hpux-g++ hpux-n64 hpux-o64 hurd-g++
 	    irix-64 irix-g++ irix-n32 irix-o32 linux-cxx linux-g++ linux-kcc
-	    netbsd-g++ openbsd-g++ osf1-cxx osf1-g++ qnx-rtp-g++ sco-g++
+	    netbsd-g++ openbsd-g++ openindiana-g++ osf1-cxx osf1-g++ qnx-rtp-g++ sco-g++
 	    solaris-cc-gcc solaris-cc solaris-64 solaris-g++ sunos-g++
 	    ultrix-g++ unixware-g++ unixware7-cc unixware7-g++"
     fi
@@ -569,12 +569,18 @@ then
 	PLATFORM=linux-${ARCH}g++
 	;;
      SunOS:5*)
-	#PLATFORM=solaris-g++
-	PLATFORM=solaris-cc
-	PLATFORM_NOTES="
-	    - Also available for SunOS:5: solaris-64 solaris-g++
-	    - To mix GNU C and SunPRO C++, add -platform solaris-cc-gcc
-	"
+     if [ -n "$(uname -a | grep openindiana)" ]
+     	then
+     		PLATFORM=openindiana-g++
+     	else
+     		#PLATFORM=solaris-g++
+			PLATFORM=solaris-cc
+			PLATFORM_NOTES="
+	    	- Also available for SunOS:5: solaris-64 solaris-g++
+	    	- To mix GNU C and SunPRO C++, add -platform solaris-cc-gcc
+	    	- If using OpenIndiana, use openindiana-g++
+			"
+	fi
 	;;
      SunOS:4*)
 	PLATFORM=sunos-g++

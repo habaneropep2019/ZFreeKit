@@ -42,6 +42,7 @@
 #ifndef QT_H
 #include "qcstring.h"
 #endif // QT_H
+#include <cstdlib>
 
 
 /*****************************************************************************
