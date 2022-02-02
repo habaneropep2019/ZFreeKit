@@ -1,24 +1,25 @@
-			  INSTALLING Qt FOR X11
+			  INSTALLING Osiris FOR X11
 
 
 You may need to be root, depending on the permissions of the directories
-where you choose to install Qt.
+where you choose to install Osiris. It is strongly recommended to install
+Osiris in /opt, as this will help eliminate potential conflicts.
 
 
-1.  Unpack the archive if you have not done so already:
+1.  Osiris is part of ZFreeKit. Unzip the archive if you have not done so already:
 
-	cd /usr/local
-	gunzip qt-x11-2.3.2.tar.gz	# uncompress the archive
-	tar xf qt-x11-2.3.2.tar	# unpack it
+	cd /opt
+	unzip ZFreeKit-master.zip	# unzip the archive
 
-    This creates the directory /usr/local/qt-2.3.2 containing the
+    This creates the directory /opt/ZFreeKit containing the
     files from the main archive.
 
-    Rename qt-2.3.2 to qt (or make a symlink):
+    Copy Osiris into /opt, and create compatibility symlink:
 
-	mv qt-2.3.2 qt
+	mv ZFreeKit/osiris .
+	ln -s osiris qt2
 
-    The rest of this file assumes that Qt is installed in /usr/local/qt.
+    The rest of this file assumes that Qt is installed in /opt/osiris.
 
 
 2.  Set some environment variables in the file .profile (or .login,
@@ -35,7 +36,7 @@ where you choose to install Qt.
     In .profile (if your shell is bash, ksh, zsh or sh), add the
     following lines:
 
-	QT2DIR=/usr/local/qt
+	QT2DIR=/opt/osiris
 	PATH=$QT2DIR/bin:$PATH
 	MANPATH=$QT2DIR/doc/man:$MANPATH
 	LD_LIBRARY_PATH=$QT2DIR/lib:$LD_LIBRARY_PATH
@@ -44,7 +45,7 @@ where you choose to install Qt.
 
     In .login (in case your shell is csh or tcsh), add the following lines:
 
-	setenv QT2DIR /usr/local/qt
+	setenv QT2DIR /opt/osiris
 	setenv PATH $QT2DIR/bin:$PATH
 	setenv MANPATH $QT2DIR/doc/man:$MANPATH
 	setenv LD_LIBRARY_PATH $QT2DIR/lib:$LD_LIBRARY_PATH
@@ -55,10 +56,8 @@ where you choose to install Qt.
     proceed otherwise.
 
 
-3.  Install your license file as $HOME/.qt-license.
-    For the free edition, you do not need a license file.  For Professional
-    and Enterprise editions, install your license file as described in your
-    distribution.
+3.  In the original Qt2, a commercial license was available. Osiris is not.
+	This section has been removed.
 
 
 4.  Building.
@@ -78,9 +77,14 @@ where you choose to install Qt.
     To create the library and compile all examples and the tutorial:
 
 	make
+	
+	You can speed up the compilation time by using the -j flag when running
+	make. On a dual-core system for example, you could use:
+	
+	make -j2
 
     If your platform or compiler is not supported, read PORTING.  If it is
-    supported but you have problems, see http://www.trolltech.com/platforms/
+    supported but you have problems, see the README for support information.
 
 
 5.  In very few cases you may need to run /sbin/ldconfig or something
@@ -95,10 +99,10 @@ where you choose to install Qt.
     And don't forget to set LD_LIBRARY_PATH as explained in 2) above.
 
 
-6.  The online HTML documentation is installed in /usr/local/qt/doc/html/
-    The main page is /usr/local/qt/doc/html/index.html
-    The man pages are installed in /usr/local/qt/doc/man/
+6.  The online HTML documentation is installed in /opt/osiris/doc/html/
+    The main page is /opt/osiris/doc/html/index.html
+    The man pages are installed in /opt/osiris/doc/man/
 
 
 
-That's all.  Qt is now installed.
+That's all.  Osiris is now installed.

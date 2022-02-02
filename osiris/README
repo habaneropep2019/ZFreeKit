@@ -1,50 +1,46 @@
-          Qt FREE EDITION 2.3.2 SOURCE CODE-stable DISTRIBUTION
+          Osiris 2.3.3 Source-testing
 
-This is the official release of the Qt Free Edition version 2.3.2.
+Osiris is a fork of the original official release of the Qt Free Edition version 2.3.2,
+and should be considered the upstream version if you wish to obtain updates for use on
+a modern sytem. Please note, that this is *not* the embedded or commercial version of Qt.
 
-You may use the Qt Free Edition for software development free of charge
-only if you develop Free (non-proprietary) Software. The LICENSE.QPL file
-explains what you may or may not do with the Qt Free Edition.
+Osiris is distributed under the original licensing terms.
 
-The Qt Free Edition may only be used on the X Window System.
+Currently supported platforms:
 
-If you are using Qt for developing commercial, proprietary, or other
-software not covered by the terms listed in the LICENSE.QPL file, you
-must have have a license for commercial Qt editions. Please see
-http://www.trolltech.com/purchase.html for how to obtain this. Qt
-commercial editions also support Microsoft Windows.  
+- Illumos/OpenIndiana	-	G++
+- Linux					-	G++
+- FreeBSD				- 	G++
 
-The INSTALL file explains how to install Qt.
+Osiris aims to be as source-compatible as possible for existing Qt2-based applications.
+It is strongly recommended to re-compile existing applications against Osiris to take
+advantage of any improvements, and prevent unusual bugs. Osiris does not claim to be
+binary-compatible.
 
-If you want to enable built-in GIF image reading support in Qt, run
-configure with the "-gif" argument before compiling.
+*** IMPORTANT - SECURITY ADVISORY ***
 
-The Qt Free Edition is currently supported on Linux, Solaris, SunOS,
-FreeBSD, OSF/1, Irix, BSD/OS, NetBSD, SCO, HP-UX and AIX. If you want
-to port Qt to a new platform, please read the PORTING file.
+This is old code, and has not been maintained for many years until now! While ZFreeKit is working on
+making this software usable again, it likely (almost definitely!) contains unpatched vulnerabilities. 
+DO NOT use on production systems at this time.
 
-The Qt Reference Documentation is available in HTML format in the
-qt/doc/html directory. Start your favorite Web browser with the
-doc/html/index.html file. The class reference doc. is also included in
-Unix man format in the qt/doc/man directory.
+Most notably, this includes the bundled libraries, which are very old versions. Osiris currently
+depends on these, although they will be updated soon.
 
-If you are new to Qt it is a good idea to read the tutorial. It is located
-in doc/html/tutorial.html. The tutorial directory contains the programs
-used in the tutorial.
+*** YOU HAVE BEEN WARNED! ***
 
-The example programs in the examples directory demonstrate some Qt
-features. You can study these examples to get an overview of how Qt
-programs can be written, or look at doc/html/examples.html with your
-browser.
+The INSTALL file details how to compile and install Osiris.
 
-If you find any bugs, please see information in the reference
-documentation about how to report it.
+99.9% of the included documentation is correct. If you notice any omissions or errors, please
+report them (see below).
 
-If you want to join the Qt user forum mailing list, send a message to
-qt-interest-request@trolltech.com containing a single word "subscribe".  If
-you want to be added to our announcements mailing list (no spam), send
-a message to qt-announce-request@trolltech.com containing a single word
-"subscribe".
+=== Support, Bug Reports, Updates, and Feature Requests ===
 
-If you are interested in commercial Qt licensing, please write
-to sales@trolltech.com.  Other mail can be sent to info@trolltech.com.
+You can request support, report bugs, and submit feature requests on the ZFreeKit Github repository.
+
+All issues about Osiris/Qt2 should have the label "Osiris" attached to them, as ZFreeKit contains multiple
+software components.
+
+https://github.com/habaneropep2019/ZFreeKit
+
+The 'osiris' branch is the development branch for Osiris/Qt2. Releases will be under the 'master' branch,
+available as a patchset with instructions to apply the patches.
