@@ -1,6 +1,7 @@
 02/01/2022
 ===========
 - Initial (albeit incomplete) support for Illumos/OpenIndiana systems
+- Moved some old Qt documentation to archives for preservation, and updated to reflect ZFreeKit/Osiris
 
 01/16/2022
 ============

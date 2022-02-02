@@ -1,0 +1,6 @@
+In the archives folder, you'll find some of the older files from the original Qt distribution.
+
+These have been preserved for historical purposes, as they are no longer in use or made obsolete
+by the forked version (Osiris) used in ZFreeKit.
+
+This folder should be viewed as the root view for the Qt2 source, and will maintain the original hierarchy.
