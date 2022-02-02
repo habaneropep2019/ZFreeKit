@@ -3,27 +3,20 @@ Before you build the Qt library and example programs, you must run the
 settings.  You can use the -platform option to specify the operating
 system and compiler you are using.
 
-Please note that as of February 2022, most of the following platforms and
-compilers have not been tested and are likely non-functional. An asterisk
-follows actively maintained platforms and compilers, as maintained by the
-ZFreeKit project.
-
 Supported platforms and compilers:
 
   aix-g++        hpux-cc        irix-o32       qnx-rtp-g++    unixware-g++
-  aix-xlc        hpux-g++       linux-g++*     sco-g++        unixware7-cc
+  aix-xlc        hpux-g++       linux-g++      sco-g++        unixware7-cc
   bsdi-g++       hpux-n64       linux-cxx      solaris-64     unixware7-g++
   dgux-g++       hpux-o64       netbsd-g++     solaris-cc
-  freebsd-g++*   irix-64        openbsd-g++    solaris-g++
-  								openindiana-g++*
+  freebsd-g++    irix-64        openbsd-g++    solaris-g++
   gnu-g++        irix-g++       osf1-cxx       sunos-g++
-  hpux-acc	 	 irix-n32       osf1-g++       ultrix-g++
+  hpux-acc	 irix-n32       osf1-g++       ultrix-g++
 
 Limitations:
 
   ultrix-g++ does not support shared libraries, use static.
   qnx-rtp-g++ is experimental only. Expect some problems.
-  openindiana-g++ is experimental only. Use this target for illumos-based OSes.
 
 Compilation problems:
 
