@@ -133,6 +133,8 @@
 #define _OS_UNIXWARE7_
 #elif defined(_SEQUENT_)
 #define _OS_DYNIX_
+#elif defined(__illumos__)
+#define _OS_ILLUMOS_
 #else
 #error "Qt has not been ported to this OS - talk to qt-bugs@trolltech.com"
 #endif
