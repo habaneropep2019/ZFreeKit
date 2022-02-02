@@ -1,0 +1,34 @@
+ZFreeKit is a project to support certain legacy GUI application toolkits and libraries.
+
+Currently, ZFreeKit houses two sub-projects:
+
+- Osiris
+- Horus
+
+Osiris is an active fork of Qt2, version 2.3.2. It is currently compiling and running on
+modern systems, albeit there are bugs to fix and a lot of work to be done. This is primarily
+to support MiDE, although Osiris can be used as a near drop-in replacement for anyone
+needing legacy Qt2 support!
+
+Horus houses supporting libraries for a fork of GNOME1, known as FienDE. These include
+GTK, glib, etc. It is not being actively maintained at the moment (although it is
+planned to be).
+
+*** SECURITY WARNING ***
+
+This repository contains legacy software and source code. It is likely to contain
+multiple vulnerabilities. As a one-man team, I'm unable to fully audit the code
+at the moment. Vulnerabilities will be fixed as soon as possible. Please report
+them on the Issues feature on GitHub.
+
+DO NOT USE on a production system! This software may contain security vulnerabilities,
+massive glitches, or other unexpected behaviors.
+
+*** YOU HAVE BEEN WARNED! ***
+
+As much as I'd like to not include the above warning, it's the responsible thing to do.
+I'm a one-man team, and this project is my side-hobby. It's also a learning experience for
+me. While portions of ZFreeKit (namely Osiris) will run and work properly on a modern system,
+the code is in some cases a decade old (or older even). It's been no small adventure getting
+it running again, and there are surprises that pop up every now and again. I make the best
+effort I can to avoid and fix these, but I cannot provide any guarantees!
