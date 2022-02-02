@@ -1,3 +1,7 @@
+02/01/2022
+===========
+- Initial (albeit incomplete) support for Illumos/OpenIndiana systems
+
 01/16/2022
 ============
 - Update "About QT" message to indicate this is a fork and part of ZFreeKit.
