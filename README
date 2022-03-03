@@ -1,3 +1,5 @@
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhabaneropep2019%2FZFreeKit.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhabaneropep2019%2FZFreeKit?ref=badge_shield)
+
 ZFreeKit is a project to support certain legacy GUI application toolkits and libraries.
 
 Currently, ZFreeKit houses two sub-projects:
@@ -32,3 +34,6 @@ me. While portions of ZFreeKit (namely Osiris) will run and work properly on a m
 the code is in some cases a decade old (or older even). It's been no small adventure getting
 it running again, and there are surprises that pop up every now and again. I make the best
 effort I can to avoid and fix these, but I cannot provide any guarantees!
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Fhabaneropep2019%2FZFreeKit.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Fhabaneropep2019%2FZFreeKit?ref=badge_large)
